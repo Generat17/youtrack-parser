@@ -1,4 +1,4 @@
-module github.com/Generat17/youtrack-parser
+module github.com/generat17/youtrack-parser
 
 go 1.21
 

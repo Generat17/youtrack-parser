@@ -9,8 +9,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Generat17/youtrack-parser/internal/config"
-	"github.com/Generat17/youtrack-parser/internal/models"
+	"github.com/generat17/youtrack-parser/internal/config"
+	"github.com/generat17/youtrack-parser/internal/models"
 )
 
 const (

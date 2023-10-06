@@ -33,8 +33,6 @@ const (
 	estimationIndexInCustomFields           = 9
 	componentIndexInCustomFields            = 10
 	spentTimeIndexInCustomFields            = 11
-
-	configPath = "../config.yaml"
 )
 
 var (
@@ -42,7 +40,7 @@ var (
 )
 
 func init() {
-	newConf, err := config.NewConfig(configPath)
+	newConf, err := config.NewConfig()
 	if err != nil {
 		log.Fatalf("getting config: %v", err)
 	}

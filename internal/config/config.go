@@ -17,8 +17,8 @@ type Config struct {
 	ListNormalNames   map[string][2]string `yaml:"normal_names"`
 }
 
-func NewConfig(path string) (Config, error) {
-	return readConfigFile(path)
+func NewConfig() (Config, error) {
+	return readConfigFile("config.yaml")
 }
 
 func readConfigFile(file string) (Config, error) {

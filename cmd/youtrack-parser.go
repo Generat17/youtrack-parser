@@ -41,15 +41,16 @@ var (
 	conf config.Config
 )
 
-// GetSprint Возвращает данные по спринту
-func GetSprint(youtrackApiToken string) (models.NormalizedSprint, error) {
-
+func init() {
 	newConf, err := config.NewConfig(configPath)
 	if err != nil {
 		log.Fatalf("getting config: %v", err)
 	}
 	conf = newConf
+}
 
+// GetSprint Возвращает данные по спринту
+func GetSprint(youtrackApiToken string) (models.NormalizedSprint, error) {
 	sprint, err := getSprint(conf.IssueFields, conf.AgileId, youtrackApiToken)
 	if err != nil {
 		return models.NormalizedSprint{}, fmt.Errorf("getting sprints: %v", err)

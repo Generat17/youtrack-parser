@@ -34,7 +34,7 @@ const (
 	componentIndexInCustomFields            = 10
 	spentTimeIndexInCustomFields            = 11
 
-	configPath = "config.yaml"
+	configPath = "../config.yaml"
 )
 
 var (

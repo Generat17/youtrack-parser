@@ -1,8 +1,13 @@
 package config
 
 var (
-	AgileId         = "83-1793"
-	IsSkipDrafts    = true
+	// AgileId id спринта
+	AgileId = "83-1793"
+
+	// IsSkipDrafts пропускать черновики?
+	IsSkipDrafts = true
+
+	// StatesWhitelist Фильтруем задачи по состоянию, белый список
 	StatesWhitelist = []string{
 		"Backlog",
 		"Canceled",
@@ -14,6 +19,8 @@ var (
 		"Open",
 		"Testing",
 	}
+
+	// IssueFields Поля Issue, которые указываются в запросе к API YouTrack
 	IssueFields = []string{
 		"id",
 		"created",
@@ -35,9 +42,13 @@ var (
 		"draftOwner(id,fullName,email)",
 		"links(id,direction,linkType(id,name,localizedName,sourceToTarget,localizedSourceToTarget,targetToSource,localizedTargetToSource,directed,aggregation,readOnly),issues(id,idReadable),trimmedIssues(id,idReadable))",
 	}
+
+	// HistoryCategories Категории истории, которые указываются в запросе к API YouTrack
 	HistoryCategories = []string{
 		"CustomFieldCategory",
 	}
+
+	// HistoryFields Поля истории, которые указываются в запросе к API YouTrack
 	HistoryFields = []string{
 		"id",
 		"timestamp",
@@ -48,6 +59,8 @@ var (
 		"category",
 		"field(id,presentation,name)",
 	}
+
+	// ListNormalNames Список fullname (из youtrack) и соответствие реальному имени и ссылки на тг
 	ListNormalNames = map[string][2]string{
 		"Anna Peremitina":     {"Перемитина Анна", "https://t.me/sandra_kas_sandra"},
 		"David Utyuganov":     {"Утюганов Давид", "https://t.me/singeroux"},
@@ -84,6 +97,7 @@ var (
 	}
 )
 
+// Config Структура конфига
 type Config struct {
 	AgileId           string               `yaml:"agile_id"`
 	IsSkipDrafts      bool                 `yaml:"skip_drafts"`
@@ -94,11 +108,8 @@ type Config struct {
 	ListNormalNames   map[string][2]string `yaml:"normal_names"`
 }
 
+// NewConfig Возвращает данные конфига
 func NewConfig() (Config, error) {
-	return readConfigFile()
-}
-
-func readConfigFile() (Config, error) {
 	config := Config{
 		AgileId:           AgileId,
 		IsSkipDrafts:      IsSkipDrafts,
@@ -108,6 +119,5 @@ func readConfigFile() (Config, error) {
 		HistoryFields:     HistoryFields,
 		ListNormalNames:   ListNormalNames,
 	}
-
 	return config, nil
 }
